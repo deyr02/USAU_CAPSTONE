@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebApplication2.Enclosure>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Enclosure_Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Layout_Path)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Material_Used)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Physical_photo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Enclosure_Status)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnclosureType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enclosure_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Layout_Path)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Material_Used)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Physical_photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enclosure_Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnclosureType.EnclosureTypeID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EnclosureID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EnclosureID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EnclosureID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

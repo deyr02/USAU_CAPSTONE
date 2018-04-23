@@ -1,0 +1,39 @@
+﻿@model WebApplication2.Daily_Temperature
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Daily_Temperature</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reproting_Date)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Reproting_Date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Temperature)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Temperature)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Teperature_Time)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Teperature_Time.Temperature_TimeID)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Daily_TemperatureID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

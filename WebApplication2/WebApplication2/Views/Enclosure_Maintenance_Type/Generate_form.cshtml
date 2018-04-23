@@ -1,0 +1,106 @@
+﻿@model WebApplication2.Enclosure_Maintenance_Type
+@{
+    ViewData["Title"] = "Generate_form";
+}
+<script>
+    function yesno(chk, label) {
+        var theTextArea = document.getElementById('textAreaSpan');
+        document.getElementById(label).innerHTML = chk.checked ? "Yes" : "No";
+        if (chk.checked == true) {
+            theTextArea.style.display = "block";
+            checkStatus = "Checked";
+        } else {
+            theTextArea.style.display = "none";
+        }
+    }
+</script>
+<h2>Generate_form</h2>
+<hr />
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Generate_Form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @foreach (var item in Model.Enclosure_Maintenance_Attributes)
+             {
+               
+
+                var A_Name = item.Attribute_Name;
+                var C_Type = item.ControlType.Control_Description;
+
+                <div class="form-group">
+                    <div class="form-group">
+                        <label asp-for="@A_Name" class="control-label">@A_Name </label>
+                        
+                        @{
+                                        switch (C_Type)
+                                        {
+                                            case "Text Box":
+                                                  <input asp-for="@A_Name" class="form-control" />
+                                                  <span asp-validation-for="Maintenacne_Description" class="text-danger"></span>
+                                            break;
+
+                                            case "Combo Box":
+                                                  
+                                                  ViewData["Control_Value_Description"] = new SelectList(item.Control_Values, "Control_Value_Description", "Control_Value_Description");                                                  
+                                                 <select class="form-control" asp-items="ViewBag.Control_Value_Description"></select>
+                                           break;
+
+                                           case "Radio Button":
+                                                <br />
+                                                foreach (Control_value Cv in item.Control_Values)
+                                                {
+                                                 <label> <input type="radio" name="@A_Name" value=" @Cv.Control_Value_Description"> @Cv.Control_Value_Description </label>
+
+                                            }
+                                            break;
+                                             case "Check Box":
+                                                <br />
+                                                 foreach (Control_value Cv in item.Control_Values)
+                                                            {
+                                                             <label> <input type="checkbox" name="A_Name" value=" @Cv.Control_Value_Description"> @Cv.Control_Value_Description </label>
+
+                                            }
+                                            break;
+
+                                            case "Check and Text Box":
+                                              <br />
+                                              <div class="form-inline">
+                                                  <input type="checkbox" class="checkit"
+                                                         name="smoking" id="@A_Name" value="1" onclick="yesno(this, 'yesno');" />
+                                                  <label for="smoking" name="yesno" id="@A_Name">No</label>
+                                                  <span style="display: none;" id="textAreaSpan">
+                                                      <label for="checkbox" name="Checked">Comment</label>
+                                                      <br />
+                                                      <textarea name="textfield2" rows="8" id="textfield2" style="width:100%"></textarea>
+                                                  </span>
+
+
+                                              </div>
+                                           
+                                             break;
+
+                                    }
+                                }
+
+
+
+
+                    </div>
+                </div>
+
+}
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+</div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

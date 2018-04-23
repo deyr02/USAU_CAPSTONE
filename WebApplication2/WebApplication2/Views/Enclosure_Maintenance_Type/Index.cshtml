@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebApplication2.Enclosure_Maintenance_Type>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Maintenacne_Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Days)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maintenacne_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Days)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Enclosure_Maintenance_TypeID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Enclosure_Maintenance_TypeID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Enclosure_Maintenance_TypeID">Delete</a>
+                <a asp-action="Generate_Form" asp-route-id="@item.Enclosure_Maintenance_TypeID">Generate Form</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

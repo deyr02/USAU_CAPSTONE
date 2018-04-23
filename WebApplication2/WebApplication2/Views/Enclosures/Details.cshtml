@@ -1,0 +1,66 @@
+﻿@model WebApplication2.Enclosure
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Enclosure</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Enclosure_Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Enclosure_Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Layout_Path)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Layout_Path)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Material_Used)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Material_Used)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Physical_photo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Physical_photo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Enclosure_Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Enclosure_Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnclosureType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EnclosureType.EnclosureTypeID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EnclosureID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
